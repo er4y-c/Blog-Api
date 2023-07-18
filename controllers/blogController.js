@@ -1,5 +1,8 @@
 const Blog = require('../models/Blog');
 
+//@desc Get all blogs of User
+//@route POST /api/blogs/
+//@access private
 const getAllBlogs = async (req, res) => {
     try {
       const blogs = await Blog.find({ userId: req.user.userId });
@@ -9,6 +12,9 @@ const getAllBlogs = async (req, res) => {
     }
 };
 
+//@desc Create new blog
+//@route POST /api/blogs/create
+//@access private
 const createBlog = async (req, res) => {
     try {
       const { title, keys, content } = req.body;
