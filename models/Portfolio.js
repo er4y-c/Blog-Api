@@ -3,12 +3,10 @@ const mongoose = require('mongoose');
 const PortfolioSchema = new mongoose.Schema({
   overview: String,
   services: [{
-    id: Number,
     title: String,
     icon: String,
   }],
   experiences: [{
-    id: Number,
     companyName: String,
     companyIcon: String,
     position: String,
@@ -18,12 +16,10 @@ const PortfolioSchema = new mongoose.Schema({
     isCurrent: Boolean,
   }],
   technologies: [{
-    id: Number,
     icon: String,
     name: String,
   }],
   education: [{
-    id: Number,
     school: String,
     branch: String,
     icon: String,
@@ -35,14 +31,12 @@ const PortfolioSchema = new mongoose.Schema({
     isCurrent: Boolean
   }],
   certifications: [{
-    id: Number,
     title: String,
     icon: String,
     description: String,
     date: Date,
   }],
   projects: [{
-    id: Number,
     title: String,
     description: String,
     link: String,

@@ -1,11 +1,21 @@
 const Portfolio = require('../models/Portfolio');
+const User = require('../models/User');
 
 //@desc Get user's portfolio
 //@route GET /api/portfolios
 //@access public
 const getPortfolio = async (req, res) => {
     try {
-      const portfolios= await Portfolio.find({ userId: req.user.userId });
+      const { username } = req.query;
+      if (!username) {
+        return res.status(400).json({ error: "Username query parameter is missing." });
+      }
+
+      const user = await User.findOne({ username: username });
+      if (!user) {
+        return res.status(404).json({ error: `User(${username}) not found` });
+      }
+      const portfolios= await Portfolio.findOne({ __v: user.__v });
       res.json(portfolios);
     } catch (error) {
       res.status(500).json({ error: error.message });

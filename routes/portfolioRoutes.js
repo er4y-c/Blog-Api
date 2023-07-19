@@ -3,7 +3,7 @@ const authenticateToken = require('../middlewares/authenticateToken');
 const portfolioController = require("../controllers/portfolioController");
 const router = express.Router();
 
-router.get('/', authenticateToken, portfolioController.getPortfolio);
+router.get('/', portfolioController.getPortfolio);
 
 router.post('/', authenticateToken, portfolioController.createPortfolio);
 
